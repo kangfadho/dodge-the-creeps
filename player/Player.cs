@@ -58,4 +58,16 @@ public partial class Player : Area2D
 			animatedSprite.FlipH= velocity.Y >0; // bawah true, atas false
 		}
 	}
+	private void OnBodyEntered(Node2D body)
+	{
+		Hide(); // nyelidekno player (gurita e)
+		EmitSignal(SignalName.Hit); // kirim sinyal tabrakan
+		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+	}
+	public void Start(Vector2 pos)
+	{
+		Position = pos;
+		Show();
+		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+	}
 }
