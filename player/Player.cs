@@ -3,6 +3,8 @@ using System;
 
 public partial class Player : Area2D
 {
+	[Signal]
+	public delegate void HitEventHandler();
 	[Export]
 	public int Speed {get; set; } = 400;
 	private Vector2 _screenSize;
