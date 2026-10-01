@@ -30,8 +30,12 @@ public partial class Player : Area2D
 		if (Input.IsActionPressed("move_up")){
 			velocity.Y -= 1;
 		}
+		var animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		if (velocity.Length()>0){
 			velocity = velocity.Normalized()*Speed;
+		} else
+		{
+			animatedSprite.Stop(); // terakhir
 		}
 		Position += velocity * (float)delta;
 		Position = new Vector2(
