@@ -42,5 +42,18 @@ public partial class Player : Area2D
 			x: Mathf.Clamp(Position.X, 54, _screenSize.X - 54),
 			y: Mathf.Clamp(Position.Y, 68, _screenSize.Y - 68)
 		);
+		// Logika animasi dan membalik arah
+		if (velocity.X != 0)
+		{
+			animatedSprite.Animation= "walk";
+			animatedSprite.FlipV= false;
+			animatedSprite.FlipH= velocity.X < 0; //kiri = true, kanan = false
+		}
+		else if (velocity.Y !=0)
+		{
+			animatedSprite.Animation= "up";
+			animatedSprite.FlipV= false;
+			animatedSprite.FlipH= velocity.Y >0; // bawah true, atas false
+		}
 	}
 }
