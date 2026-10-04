@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rck7aaobtcy5"]
 
 [ext_resource type="Texture2D" uid="uid://bo647pxeituf1" path="res://assets/art/enemyFlyingAlt_1.png" id="1_5bhu7"]
+[ext_resource type="Script" uid="uid://hx10e0pxejoj" path="res://Mob.cs" id="1_ejbti"]
 [ext_resource type="Texture2D" uid="uid://c8w2anx4rgscr" path="res://assets/art/enemyFlyingAlt_2.png" id="2_ejbti"]
 [ext_resource type="Texture2D" uid="uid://s1ehfpwby3fn" path="res://assets/art/enemySwimming_1.png" id="3_ch7wj"]
 [ext_resource type="Texture2D" uid="uid://cfy6xknm4ydnu" path="res://assets/art/enemySwimming_2.png" id="4_x4v8o"]
@@ -45,6 +46,7 @@ animations = [{
 
 [node name="Mob" type="RigidBody2D" unique_id=1221557031]
 gravity_scale = 0.0
+script = ExtResource("1_ejbti")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=795632394]
 sprite_frames = SubResource("SpriteFrames_83hs8")
@@ -54,3 +56,5 @@ frame_progress = 0.36602777
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=913298271]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=242391022]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]
